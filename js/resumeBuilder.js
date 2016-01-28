@@ -1,6 +1,7 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
+ /* jshint forin: false */
 var bio =
 {
   "name": "Ivy Liang",
@@ -42,12 +43,12 @@ bio.display = function() {
   $("#header").append(formattedWelcomeMsg);
   if (bio.skills.length > 0) {
     $("#header").append(HTMLskillsStart);
-    for (skill in bio.skills) {
+    for (var skill in bio.skills) {
       var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
       $("#skills").append(formattedSkill);
     }
   }
-}
+};
 
 var education =
 {
@@ -56,25 +57,25 @@ var education =
     "location": "Wuhan, China",
     "degree": "BS",
     "majors": ["Financial Engineering", "LAW"],
-    "dates": "2007-2011",
+    "dates": "2011",
     "url": ""
   }, {
     "name": "University of Southern California",
     "location": "Los Angeles, CA",
     "degree": "MS",
     "majors": ["Financial Engineering"],
-    "dates": "2011-2013",
+    "dates": "2013",
     "url": ""
   }],
   "onlineCourses": [{
     "title": "Front-End Web Developer Nanodegree",
     "school": "Udacity",
-    "dates": "2015-2016",
+    "date": "2016",
     "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
   }]
 };
 education.display = function() {
-  for (school in education.schools) {
+  for (var school in education.schools) {
     $("#education").append(HTMLschoolStart);
     var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
     var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
@@ -83,23 +84,23 @@ education.display = function() {
     $(".education-entry:last").append(formattedSchoolDates);
     var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
     $(".education-entry:last").append(formattedSchoolLocation);
-    for (major in education.schools[school].majors) {
+    for (var major in education.schools[school].majors) {
       var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors[major]);
       $(".education-entry:last").append(formattedSchoolMajor);
     }
   }
   $("#education").append(HTMLonlineClasses);
-  for (onlineCourse in education.onlineCourses) {
+  for (var onlineCourse in education.onlineCourses) {
     $("#education").append(HTMLschoolStart);
     var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
     var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
     $(".education-entry:last").append(formattedOnlineTitle+formattedOnlineSchool);
-    var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].dates);
+    var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].date);
     $(".education-entry:last").append(formattedOnlineDates);
     var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
     $(".education-entry:last").append(formattedOnlineURL);
   }
-}
+};
 var work =
 {
   "jobs" : [{
@@ -109,7 +110,7 @@ var work =
     "dates": "2014-2015",
     "description": "Smart Hardware"
   }, {
-    "employer": "Meedow",
+    "employer": "Doctrina Consulting",
     "title": "Business Analyst",
     "location": "Santa Clara",
     "dates": "2013-2014",
@@ -117,7 +118,7 @@ var work =
   }]
 };
 work.display = function() {
-  for (job in work.jobs) {
+  for (var job in work.jobs) {
     $("#workExperience").append(HTMLworkStart);
     var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
     var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -129,13 +130,13 @@ work.display = function() {
     var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
     $(".work-entry:last").append(formattedDescription);
   }
-}
+};
 var projects =
 {
   "projects": [{
-    "title": "Pro",
-    "dates": "2015",
-    "description": "LALALA",
+    "title": "Online Resume",
+    "dates": "2016",
+    "description": "Build an online resume by JS",
     "images": ["images/fry.jpg", "images/fry.jpg"]
   }, {
     "title": "HAHA",
@@ -145,7 +146,7 @@ var projects =
   }]
 };
 projects.display = function() {
-  for (project in projects.projects) {
+  for (var project in projects.projects) {
     $("#projects").append(HTMLprojectStart);
     var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
     $(".project-entry:last").append(formattedProjectTitle);
@@ -154,13 +155,13 @@ projects.display = function() {
     var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
     $(".project-entry:last").append(formattedProjectDescription);
     if (projects.projects[project].images.length > 0) {
-      for (image in projects.projects[project].images) {
+      for (var image in projects.projects[project].images) {
         var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
         $(".project-entry:last").append(formattedProjectImage);
       }
     }
   }
-}
+};
 
 bio.display();
 work.display();
